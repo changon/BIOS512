@@ -1,0 +1,50 @@
+---
+title: "Final Project"
+output: pdf
+---
+
+```{r}
+library(tidyverse)
+library(dplyr)
+```
+
+I am working with data from https://www.kaggle.com/augustus0498/life-expectancy-who.
+
+This dataset, from WHO, has data on the country level to better understand facotrs that influence life expectancy.
+
+```{r}
+path="/Users/Raphael/Desktop/Class/BIOS512/final_project"
+setwd(path)
+
+data<-read.csv("led.csv")
+data %>% head
+```
+
+Clean the file to make sure no NAs exist.
+```{r}
+library(stats) # for complete.cases
+sum(is.na(data))
+data=data[complete.cases(data),]
+dim(data)
+```
+Now we work off of the remaining 1649 samples.
+
+We first begin by looking into the countries and their life expectancies.
+
+```{r}
+p = ggplot(data, aes(x=Country))
+p = p + geom_bar(aes(y=Lifeexpectancy), stat='identity')
+p = p + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+p = p + labs(x = 'Country', y = 'Life Expectancy')
+p
+
+
+```
+
+This is messy so let's filter to countries on the extremes, or those that are above and below a certain threshold.
+```{r}
+data <- 
+```
+
+Time based analysis
+Facet by country.
